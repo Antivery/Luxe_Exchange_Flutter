@@ -140,9 +140,9 @@ class StripeAddNewMerchent {
         'type': 'express',
         'email': email,
         'businessName': storeName,
-        'city': '',
-        'state': '',
-        'country': '',
+        'city': city,
+        'state': state,
+        'country': country,
         'business_type': 'company',
       },
       bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
@@ -184,5 +184,24 @@ class StripeAddNewDriver {
       bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
       returnBody: true,
     );
+  }
+}
+
+class GetUserPaymentMethode {
+  static Future<ApiCallResponse> call({
+    String customerId = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+        callName: 'GetUserPaymentMethod',
+        apiUrl:
+            'https://api.stripe.com/v1/customers/$customerId/payment_methods',
+        callType: ApiCallType.GET,
+        headers: {
+          'Authorization':
+              'Bearer  sk_test_51KgurfB76m2cyulrnjsu0VagzLzHM6EzUUNejSnFaHHwuyGOS1KOoo9OapYxtVAZNQdj3aByV3lSkFYID0fRwCXF00hJrV020Y',
+        },
+        params: {customerId: customerId},
+        bodyType: BodyType.JSON,
+        returnBody: true);
   }
 }

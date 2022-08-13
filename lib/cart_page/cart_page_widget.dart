@@ -816,6 +816,7 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                       customerName: valueOrDefault(
                                           currentUserDocument?.fullName, ''),
                                       description: 'test',
+                                      onBehalfOf: 'pi_3LUBtyB76m2cyulr057Fkfuk',
                                       allowGooglePay: false,
                                       allowApplePay: false,
                                     );
