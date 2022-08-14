@@ -813,9 +813,13 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                           .productTotal(
                                               containerCartItemsRecord.quantity,
                                               containerCartItemsRecord.price)
-                                          .toDouble(),
+                                          .toInt(),
+                                      currency: 'usd',
+                                      onBehalfOf: 'acct_1KgwFLHH13TNKKuc',
+                                      description: 'test',
                                     );
                                     print(response.statusCode);
+                                    print(response.jsonBody);
 
                                     final ordersCreateData = {
                                       ...createOrdersRecordData(

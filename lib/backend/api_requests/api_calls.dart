@@ -29,12 +29,12 @@ class GoogleMatrixCall {
 
 class StripeInitPaymentCall {
   static Future<ApiCallResponse> call({
-    double amount,
-    String currency = 'usd',
+    int amount,
+    String currency = 'USD',
     String onBehalfOf = '',
     String description = '',
-    int applicationFeeAmount,
-    String transferData = '',
+    // int applicationFeeAmount,
+    // String transferData = '',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'Stripe init Payment',
@@ -49,8 +49,8 @@ class StripeInitPaymentCall {
         'currency': currency,
         'on_behalf_of': onBehalfOf,
         'description': description,
-        'application_fee_amount': applicationFeeAmount,
-        'transfer_data': transferData,
+        // 'application_fee_amount': applicationFeeAmount,
+        // 'transfer_data': transferData,
       },
       bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
       returnBody: true,
