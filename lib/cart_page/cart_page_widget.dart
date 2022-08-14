@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/api_requests/api_calls.dart';
 import '../backend/stripe/payment_manager.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -806,31 +807,15 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                               children: [
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    final paymentResponse =
-                                        await processStripePayment(
-                                      amount: functions.productTotal(
-                                          containerCartItemsRecord.quantity,
-                                          containerCartItemsRecord.price),
-                                      currency: 'usd',
-                                      customerEmail: currentUserEmail,
-                                      customerName: valueOrDefault(
-                                          currentUserDocument?.fullName, ''),
-                                      description: 'test',
-                                      onBehalfOf: 'pi_3LUBtyB76m2cyulr057Fkfuk',
-                                      allowGooglePay: false,
-                                      allowApplePay: false,
+                                    final response =
+                                        await StripeInitPaymentCall.call(
+                                      amount: functions
+                                          .productTotal(
+                                              containerCartItemsRecord.quantity,
+                                              containerCartItemsRecord.price)
+                                          .toDouble(),
                                     );
-                                    if (paymentResponse.paymentId == null) {
-                                      if (paymentResponse.errorMessage !=
-                                          null) {
-                                        showSnackbar(
-                                          context,
-                                          'Error: ${paymentResponse.errorMessage}',
-                                        );
-                                      }
-                                      return;
-                                    }
-                                    paymentId = paymentResponse.paymentId;
+                                    print(response.statusCode);
 
                                     final ordersCreateData = {
                                       ...createOrdersRecordData(

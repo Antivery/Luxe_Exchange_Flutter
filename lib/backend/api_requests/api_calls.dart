@@ -30,7 +30,7 @@ class GoogleMatrixCall {
 class StripeInitPaymentCall {
   static Future<ApiCallResponse> call({
     double amount,
-    String currency = '',
+    String currency = 'usd',
     String onBehalfOf = '',
     String description = '',
     int applicationFeeAmount,
