@@ -809,17 +809,23 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                   onPressed: () async {
                                     final response =
                                         await StripeInitPaymentCall.call(
-                                      amount: functions
-                                          .productTotal(
-                                              containerCartItemsRecord.quantity,
-                                              containerCartItemsRecord.price)
-                                          .toInt(),
-                                      currency: 'usd',
-                                      onBehalfOf: 'acct_1KgwFLHH13TNKKuc',
-                                      description: 'test',
-                                    );
+                                            amount: functions
+                                                .productTotal(
+                                                    containerCartItemsRecord
+                                                        .quantity,
+                                                    containerCartItemsRecord
+                                                        .price)
+                                                .toInt(),
+                                            currency: 'usd',
+                                            onBehalfOf: 'acct_1KgwFLHH13TNKKuc',
+                                            description: 'test',
+                                            custStripId: currentUserDocument
+                                                .stripeCustID);
                                     print(response.statusCode);
                                     print(response.jsonBody);
+                                    if (response.statusCode == 200) {
+                                      SnackBar(content: Text(''));
+                                    }
 
                                     final ordersCreateData = {
                                       ...createOrdersRecordData(

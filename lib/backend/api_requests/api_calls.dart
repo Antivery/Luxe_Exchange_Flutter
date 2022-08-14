@@ -28,14 +28,15 @@ class GoogleMatrixCall {
 }
 
 class StripeInitPaymentCall {
-  static Future<ApiCallResponse> call({
-    int amount,
-    String currency = 'USD',
-    String onBehalfOf = '',
-    String description = '',
-    // int applicationFeeAmount,
-    // String transferData = '',
-  }) {
+  static Future<ApiCallResponse> call(
+      {int amount,
+      String currency = 'USD',
+      String onBehalfOf = '',
+      String description = '',
+      String custStripId = ''
+      // int applicationFeeAmount,
+      // String transferData = '',
+      }) {
     return ApiManager.instance.makeApiCall(
       callName: 'Stripe init Payment',
       apiUrl: 'https://api.stripe.com/v1/payment_intents',
@@ -49,6 +50,7 @@ class StripeInitPaymentCall {
         'currency': currency,
         'on_behalf_of': onBehalfOf,
         'description': description,
+        'customer': custStripId,
         // 'application_fee_amount': applicationFeeAmount,
         // 'transfer_data': transferData,
       },
