@@ -8,7 +8,7 @@ class GoogleMatrixCall {
   static Future<ApiCallResponse> call({
     String origins = '',
     String destinations = '',
-    String key = 'AIzaSyB3mZydbtv4xhgS9B9NYixurQkErYxcQW8',
+    String key = 'AIzaSyAwQWv47u42TO-7ofyFUiTdc6BA3NGZOUc',
     String units = 'imperial',
   }) {
     return ApiManager.instance.makeApiCall(
