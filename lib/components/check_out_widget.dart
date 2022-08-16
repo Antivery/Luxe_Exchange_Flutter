@@ -8,7 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CheckOutWidget extends StatefulWidget {
-  const CheckOutWidget({Key key}) : super(key: key);
+  const CheckOutWidget({
+    Key key,
+    this.method,
+  }) : super(key: key);
+
+  final Future<dynamic> Function() method;
 
   @override
   _CheckOutWidgetState createState() => _CheckOutWidgetState();

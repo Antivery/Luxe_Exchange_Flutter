@@ -214,7 +214,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                     ),
-                            hintText: 'Enter your password here...',
+                            hintText: 'Enter your email here...',
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Lexend Deca',
@@ -285,7 +285,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                     ),
-                            hintText: 'Confirm your passwprd here...',
+                            hintText: 'Enter your email here...',
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Lexend Deca',

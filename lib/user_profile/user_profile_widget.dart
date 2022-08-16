@@ -1,11 +1,11 @@
 import '../auth/auth_util.dart';
+import '../components/check_out_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 class UserProfileWidget extends StatefulWidget {
   const UserProfileWidget({Key key}) : super(key: key);
@@ -13,8 +13,6 @@ class UserProfileWidget extends StatefulWidget {
   @override
   _UserProfileWidgetState createState() => _UserProfileWidgetState();
 }
-
-bool isCvvFocused = false;
 
 class _UserProfileWidgetState extends State<UserProfileWidget>
     with TickerProviderStateMixin {
@@ -36,7 +34,6 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
       ),
     ),
   };
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -350,24 +347,18 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
                     child: InkWell(
                       onTap: () async {
                         await showModalBottomSheet(
-                            isScrollControlled: true,
-                            context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
-                                child: Container(
-                                    height: 500,
-                                    child: CreditCardWidget(
-                                      cardHolderName: 'Anthony Ivery',
-                                      expiryDate: '10/23',
-                                      cardNumber: '',
-                                      cvvCode: '836',
-                                      showBackView: isCvvFocused,
-                                      obscureCardNumber: true,
-                                      obscureCardCvv: true,
-                                    )),
-                              );
-                            });
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: MediaQuery.of(context).viewInsets,
+                              child: CheckOutWidget(
+                                method: () async {},
+                              ),
+                            );
+                          },
+                        );
                       },
                       child: Row(
                         mainAxisSize: MainAxisSize.max,

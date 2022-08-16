@@ -264,7 +264,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         return SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: List.generate(
                                 columnBeautyStoreRecordList.length,
                                 (columnIndex) {

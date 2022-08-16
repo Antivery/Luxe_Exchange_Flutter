@@ -41,8 +41,6 @@ Future<StripePaymentResponse> processStripePayment({
   @required String customerEmail,
   String customerName = '',
   String description = '',
-  String onBehalfOf = '',
-  String stripeAccountId = '',
   bool allowGooglePay = false,
   bool allowApplePay = false,
   ThemeMode themeStyle = ThemeMode.system,
@@ -63,7 +61,6 @@ Future<StripePaymentResponse> processStripePayment({
         'email': customerEmail,
         'name': customerName,
         'description': description,
-        'on_behalf_of': onBehalfOf,
       },
     );
     final success = response['success'] ?? false;

@@ -144,6 +144,13 @@ class _$OrdersRecordSerializer implements StructuredSerializer<OrdersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.paymentInitId;
+    if (value != null) {
+      result
+        ..add('payment_init_id')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -246,6 +253,10 @@ class _$OrdersRecordSerializer implements StructuredSerializer<OrdersRecord> {
           result.phoneNumber = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'payment_init_id':
+          result.paymentInitId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -295,6 +306,8 @@ class _$OrdersRecord extends OrdersRecord {
   @override
   final String phoneNumber;
   @override
+  final String paymentInitId;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$OrdersRecord([void Function(OrdersRecordBuilder) updates]) =>
@@ -318,6 +331,7 @@ class _$OrdersRecord extends OrdersRecord {
       this.uid,
       this.createdTime,
       this.phoneNumber,
+      this.paymentInitId,
       this.reference})
       : super._();
 
@@ -349,6 +363,7 @@ class _$OrdersRecord extends OrdersRecord {
         uid == other.uid &&
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
+        paymentInitId == other.paymentInitId &&
         reference == other.reference;
   }
 
@@ -372,29 +387,32 @@ class _$OrdersRecord extends OrdersRecord {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            0,
-                                                                            userOrder
+                                                                            $jc(
+                                                                                0,
+                                                                                userOrder
+                                                                                    .hashCode),
+                                                                            driverForOrder
                                                                                 .hashCode),
-                                                                        driverForOrder
+                                                                        pickedUpByDriver
                                                                             .hashCode),
-                                                                    pickedUpByDriver
+                                                                    orderTotal
                                                                         .hashCode),
-                                                                orderTotal
+                                                                storeOrderdFrom
                                                                     .hashCode),
-                                                            storeOrderdFrom
+                                                            deliveryFee
                                                                 .hashCode),
-                                                        deliveryFee.hashCode),
-                                                    timePickedUp.hashCode),
-                                                timeDelivered.hashCode),
-                                            orderItems.hashCode),
-                                        orderItemsTest.hashCode),
-                                    delivered.hashCode),
-                                email.hashCode),
-                            displayName.hashCode),
-                        photoUrl.hashCode),
-                    uid.hashCode),
-                createdTime.hashCode),
-            phoneNumber.hashCode),
+                                                        timePickedUp.hashCode),
+                                                    timeDelivered.hashCode),
+                                                orderItems.hashCode),
+                                            orderItemsTest.hashCode),
+                                        delivered.hashCode),
+                                    email.hashCode),
+                                displayName.hashCode),
+                            photoUrl.hashCode),
+                        uid.hashCode),
+                    createdTime.hashCode),
+                phoneNumber.hashCode),
+            paymentInitId.hashCode),
         reference.hashCode));
   }
 
@@ -418,6 +436,7 @@ class _$OrdersRecord extends OrdersRecord {
           ..add('uid', uid)
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
+          ..add('paymentInitId', paymentInitId)
           ..add('reference', reference))
         .toString();
   }
@@ -505,6 +524,11 @@ class OrdersRecordBuilder
   String get phoneNumber => _$this._phoneNumber;
   set phoneNumber(String phoneNumber) => _$this._phoneNumber = phoneNumber;
 
+  String _paymentInitId;
+  String get paymentInitId => _$this._paymentInitId;
+  set paymentInitId(String paymentInitId) =>
+      _$this._paymentInitId = paymentInitId;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -534,6 +558,7 @@ class OrdersRecordBuilder
       _uid = $v.uid;
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
+      _paymentInitId = $v.paymentInitId;
       _reference = $v.reference;
       _$v = null;
     }
@@ -576,6 +601,7 @@ class OrdersRecordBuilder
               uid: uid,
               createdTime: createdTime,
               phoneNumber: phoneNumber,
+              paymentInitId: paymentInitId,
               reference: reference);
     } catch (_) {
       String _$failedField;

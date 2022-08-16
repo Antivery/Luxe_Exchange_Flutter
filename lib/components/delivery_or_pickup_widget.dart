@@ -40,7 +40,9 @@ class _DeliveryOrPickupWidgetState extends State<DeliveryOrPickupWidget> {
                 builder: (context) {
                   return Padding(
                     padding: MediaQuery.of(context).viewInsets,
-                    child: CheckOutWidget(),
+                    child: CheckOutWidget(
+                      method: () async {},
+                    ),
                   );
                 },
               );
@@ -87,7 +89,9 @@ class _DeliveryOrPickupWidgetState extends State<DeliveryOrPickupWidget> {
                 builder: (context) {
                   return Padding(
                     padding: MediaQuery.of(context).viewInsets,
-                    child: CheckOutWidget(),
+                    child: CheckOutWidget(
+                      method: () async {},
+                    ),
                   );
                 },
               );

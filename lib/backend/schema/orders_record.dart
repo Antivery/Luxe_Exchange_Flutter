@@ -76,6 +76,14 @@ abstract class OrdersRecord
   String get phoneNumber;
 
   @nullable
+  @BuiltValueField(wireName: 'payment_init_id')
+  String get paymentInitId;
+
+  @nullable
+  @BuiltValueField(wireName: 'payment_init_status')
+  String get paymentInitStatus;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -90,7 +98,9 @@ abstract class OrdersRecord
     ..displayName = ''
     ..photoUrl = ''
     ..uid = ''
-    ..phoneNumber = '';
+    ..phoneNumber = ''
+    ..paymentInitId = ''
+    ..paymentInitStatus = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Orders');
@@ -130,6 +140,8 @@ abstract class OrdersRecord
           ..createdTime = safeGet(() => DateTime.fromMillisecondsSinceEpoch(
               snapshot.data['created_time']))
           ..phoneNumber = snapshot.data['phone_number']
+          ..paymentInitId = snapshot.data['payment_init_id']
+          ..paymentInitStatus = snapshot.data['payment_init_status']
           ..reference = OrdersRecord.collection.doc(snapshot.objectID),
       );
 
@@ -174,6 +186,8 @@ Map<String, dynamic> createOrdersRecordData({
   String uid,
   DateTime createdTime,
   String phoneNumber,
+  String paymentInitId,
+  String paymentInitStatus,
 }) =>
     serializers.toFirestore(
         OrdersRecord.serializer,
@@ -194,4 +208,6 @@ Map<String, dynamic> createOrdersRecordData({
           ..photoUrl = photoUrl
           ..uid = uid
           ..createdTime = createdTime
-          ..phoneNumber = phoneNumber));
+          ..phoneNumber = phoneNumber
+          ..paymentInitId = paymentInitId
+          ..paymentInitStatus = paymentInitStatus));

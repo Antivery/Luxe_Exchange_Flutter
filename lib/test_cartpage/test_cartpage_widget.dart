@@ -535,7 +535,9 @@ class _TestCartpageWidgetState extends State<TestCartpageWidget> {
                                   child: Container(
                                     height: MediaQuery.of(context).size.height *
                                         0.5,
-                                    child: CheckOutWidget(),
+                                    child: CheckOutWidget(
+                                      method: () async {},
+                                    ),
                                   ),
                                 );
                               },
