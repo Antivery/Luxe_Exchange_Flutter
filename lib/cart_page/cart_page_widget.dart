@@ -816,17 +816,20 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                                     containerCartItemsRecord
                                                         .price)
                                                 .toInt(),
-                                            currency: 'usd',
-                                            onBehalfOf: 'acct_1KgwFLHH13TNKKuc',
+                                            // currency: 'usd',
+                                            onBehalfOf: containerCartItemsRecord
+                                                .storeStripeId,
                                             description: 'test',
                                             custStripId: currentUserDocument
                                                 .stripeCustID);
-                                    print(response.statusCode);
-                                    print(response.jsonBody);
                                     if (response.statusCode == 200) {
-                                      SnackBar(content: Text(''));
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text('success')));
                                     }
 
+                                    print(response.statusCode);
+                                    print(response.jsonBody);
                                     final ordersCreateData = {
                                       ...createOrdersRecordData(
                                         userOrder:

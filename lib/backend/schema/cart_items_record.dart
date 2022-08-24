@@ -54,6 +54,10 @@ abstract class CartItemsRecord
   String get phoneNumber;
 
   @nullable
+  @BuiltValueField(wireName: 'payment_inet_id')
+  String get paymentInitId;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -65,7 +69,8 @@ abstract class CartItemsRecord
     ..displayName = ''
     ..photoUrl = ''
     ..uid = ''
-    ..phoneNumber = '';
+    ..phoneNumber = ''
+    ..paymentInitId = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Cart_Items');
@@ -101,6 +106,7 @@ Map<String, dynamic> createCartItemsRecordData({
   String uid,
   DateTime createdTime,
   String phoneNumber,
+  String paymentInitId,
 }) =>
     serializers.toFirestore(
         CartItemsRecord.serializer,
@@ -116,4 +122,5 @@ Map<String, dynamic> createCartItemsRecordData({
           ..photoUrl = photoUrl
           ..uid = uid
           ..createdTime = createdTime
-          ..phoneNumber = phoneNumber));
+          ..phoneNumber = phoneNumber
+          ..paymentInitId = paymentInitId));

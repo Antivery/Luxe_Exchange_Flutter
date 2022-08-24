@@ -106,6 +106,12 @@ class _$CartItemsRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    if (value != null) {
+      result
+        ..add('phone_number')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -222,6 +228,8 @@ class _$CartItemsRecord extends CartItemsRecord {
   @override
   final String phoneNumber;
   @override
+  final String paymentInitId;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$CartItemsRecord([void Function(CartItemsRecordBuilder) updates]) =>
@@ -240,6 +248,7 @@ class _$CartItemsRecord extends CartItemsRecord {
       this.uid,
       this.createdTime,
       this.phoneNumber,
+      this.paymentInitId,
       this.reference})
       : super._();
 
@@ -267,6 +276,7 @@ class _$CartItemsRecord extends CartItemsRecord {
         uid == other.uid &&
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
+        paymentInitId == other.paymentInitId &&
         reference == other.reference;
   }
 
@@ -285,20 +295,22 @@ class _$CartItemsRecord extends CartItemsRecord {
                                             $jc(
                                                 $jc(
                                                     $jc(
-                                                        0,
-                                                        productsInCart
-                                                            .hashCode),
-                                                    price.hashCode),
-                                                quantity.hashCode),
-                                            user.hashCode),
-                                        itemStore.hashCode),
-                                    storeStripeId.hashCode),
-                                email.hashCode),
-                            displayName.hashCode),
-                        photoUrl.hashCode),
-                    uid.hashCode),
-                createdTime.hashCode),
-            phoneNumber.hashCode),
+                                                        $jc(
+                                                            0,
+                                                            productsInCart
+                                                                .hashCode),
+                                                        price.hashCode),
+                                                    quantity.hashCode),
+                                                user.hashCode),
+                                            itemStore.hashCode),
+                                        storeStripeId.hashCode),
+                                    email.hashCode),
+                                displayName.hashCode),
+                            photoUrl.hashCode),
+                        uid.hashCode),
+                    createdTime.hashCode),
+                phoneNumber.hashCode),
+            paymentInitId.hashCode),
         reference.hashCode));
   }
 
@@ -317,6 +329,7 @@ class _$CartItemsRecord extends CartItemsRecord {
           ..add('uid', uid)
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
+          ..add('paymentInitId', paymentInitId)
           ..add('reference', reference))
         .toString();
   }
@@ -327,7 +340,10 @@ class CartItemsRecordBuilder
   _$CartItemsRecord _$v;
 
   DocumentReference<Object> _productsInCart;
+
+  String paymentInitId;
   DocumentReference<Object> get productsInCart => _$this._productsInCart;
+
   set productsInCart(DocumentReference<Object> productsInCart) =>
       _$this._productsInCart = productsInCart;
 
@@ -376,6 +392,10 @@ class CartItemsRecordBuilder
   String _phoneNumber;
   String get phoneNumber => _$this._phoneNumber;
   set phoneNumber(String phoneNumber) => _$this._phoneNumber = phoneNumber;
+
+  String _paymentInitId;
+  String get paymentIntId => _$this._paymentInitId;
+  set paymentIntId(String phoneNumber) => _$this._phoneNumber = phoneNumber;
 
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
